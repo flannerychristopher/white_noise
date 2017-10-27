@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AudioList from './components/AudioList';
+import Player from './components/Player';
 import './App.css';
 
 import audio1 from './audio/01-White.mp3';
@@ -20,8 +21,8 @@ class App extends Component {
     }
   }
 
-  onListItemClick(item) {
-    this.setState({ audioCurrent: item })
+  onListItemClick(listItem) {
+    this.setState({ audioCurrent: listItem })
   }
 
   render() {
@@ -30,9 +31,11 @@ class App extends Component {
         <h1>white noise generator</h1>
 
         <p>now playing: {this.state.audioCurrent.title} </p>
-        <audio controls='controls' autoPlay>
-          <source src={this.state.audioCurrent.file} />
-        </audio>
+
+        <Player
+          key={this.state.audioCurrent.title}
+          file={this.state.audioCurrent.file}
+        />
 
         <AudioList
           onClick={this.onListItemClick.bind(this)}
