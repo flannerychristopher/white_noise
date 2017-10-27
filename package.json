@@ -2,7 +2,7 @@
   "name": "white_noise",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://flanthedev.github.io/spotify_preview/",
+  "homepage": "https://flanthedev.github.io/white_noise",
   "dependencies": {
     "gh-pages": "^1.0.0",
     "react": "^16.0.0",
