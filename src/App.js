@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import AudioList from './components/AudioList';
+import Message from './components/Message';
 import Player from './components/Player';
 import './App.css';
 
-import audio1 from './audio/01-White.mp3';
-import audio2 from './audio/02-White.mp3';
-import audio3 from './audio/03-White.mp3';
+import audio4 from './audio/white4.mp3';
+import audio5 from './audio/whiteheartbeat.mp3';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      audioPlaying: false,
       audioCurrent: {},
       audioList: [
-        { title: 'White Noise 1', file: audio1 },
-        { title: 'White Noise 2', file: audio2 },
-        { title: 'White Noise 3', file: audio3 }
+        { title: 'white noise waves', file: audio4 },
+        { title: 'white noise with heartbeat', file: audio5 }
       ]
     }
+  }
+
+  componentWillMount() {
+    this.setState({ audioCurrent: this.state.audioList[0] });
   }
 
   onListItemClick(listItem) {
@@ -30,7 +32,7 @@ class App extends Component {
       <div className='App'>
         <h1>white noise generator</h1>
 
-        <p>now playing: {this.state.audioCurrent.title} </p>
+        <Message audioCurrent={this.state.audioCurrent} />
 
         <Player
           key={this.state.audioCurrent.title}
@@ -38,8 +40,9 @@ class App extends Component {
         />
 
         <AudioList
-          onClick={this.onListItemClick.bind(this)}
           list={this.state.audioList}
+          audioCurrent={this.state.audioCurrent}
+          onClick={this.onListItemClick.bind(this)}
         />
       </div>
     );

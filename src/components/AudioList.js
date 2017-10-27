@@ -1,41 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ListItem from './ListItem';
 import '../App.css';
 
-export default class AudioList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeItem: null
-    }
-  }
+const AudioList = ({ list, onClick, audioCurrent }) => {
 
-  handleClick(listItem) {
-    console.log(listItem)
-    this.setState({ activeItem: listItem.file });
-    this.props.onClick(listItem);
-  }
-
-  renderList() {
+  const renderList = list.map((item, i) => {
     return (
-      this.props.list.map((item, i) => {
-        return (
-          <ListItem
-            key={i}
-            item={item}
-            onClick={this.handleClick.bind(this)}
-            activeItem={this.state.activeItem}
-          />
-        );
-      })
+      <ListItem
+        key={i}
+        item={item}
+        onClick={onClick}
+        audioCurrent={audioCurrent}
+      />
     );
-  }
+  })
 
-  render() {
-    return (
-      <div>
-        {this.renderList()}
-      </div>
-    );
-  }
+  return (
+    <div className="AudioList">
+      {renderList}
+    </div>
+  );
 }
+
+export default AudioList;

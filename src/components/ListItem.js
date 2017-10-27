@@ -1,11 +1,11 @@
 import React from 'react';
 import '../App.css';
 
-const ListItem = ({ item, onClick, activeItem }) => {
+const ListItem = ({ item, onClick, audioCurrent }) => {
   return (
     <div
       onClick={e => onClick(item)}
-      className={activeItem === item.file ? 'audioCurrent' : ''}
+      className={audioCurrent === item ? 'audioCurrent' : ''}
     >
       {item.title}
     </div>
